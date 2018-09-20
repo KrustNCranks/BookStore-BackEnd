@@ -8,14 +8,14 @@ const SchemaTypes = mongoose.Schema.Types;
 const bookSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: {type: String, required: true},
-    author: {type: String, required: true},
+    author: {type: String},
     description: {type: String},
     publisher: {type: String},
     cost: {type: SchemaTypes.Double, required: true},
     bookType: {type: String},
-    genre: {type: String, required: true},
+    genre: {type: String},
     image_url: {type: String},
-    isbn: {type: String, required: true}
+    isbn: {type: String}
 
 })
 
