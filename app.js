@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 // Path to the Routes which handles the requests
 const bookRoutes = require('./routes/books_router');
 const userRoutes = require('./routes/users_router');
+const genreRoutes = require('./routes/genre_router');
+const publisherRoutes = require('./routes/publisher_router');
 
 // MongoDB Connection via Mongoose
 mongoose.connect('mongodb://localhost/Book_Store',{useNewUrlParser: true});
@@ -22,6 +24,8 @@ app.use(bodyParser.json());
 // use() is a middleware to pass something [data] through it
 app.use('/books',bookRoutes);
 app.use('/users',userRoutes);
+app.use('/genres',genreRoutes);
+app.use('/publisher',publisherRoutes);
 
 
 // If App reaches anywhere else but the specified paths, throw this error
