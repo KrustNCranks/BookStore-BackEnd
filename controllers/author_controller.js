@@ -32,7 +32,7 @@ exports.get_all_authors =(req,res,next)=>{
 /**
  * POST this will post a new iTem to Author
  */
-exports.add_publisher = (req, res, next)=>{
+exports.add_author = (req, res, next)=>{
     const author = new Author({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
