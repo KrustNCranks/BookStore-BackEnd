@@ -9,6 +9,7 @@ const bookRoutes = require('./routes/books_router');
 const userRoutes = require('./routes/users_router');
 const genreRoutes = require('./routes/genre_router');
 const publisherRoutes = require('./routes/publisher_router');
+const authorRoutes = require('./routes/author_router');
 
 // MongoDB Connection via Mongoose
 mongoose.connect('mongodb://localhost/Book_Store',{useNewUrlParser: true});
@@ -26,6 +27,7 @@ app.use('/books',bookRoutes);
 app.use('/users',userRoutes);
 app.use('/genres',genreRoutes);
 app.use('/publisher',publisherRoutes);
+app.use('/author',authorRoutes);
 
 
 // If App reaches anywhere else but the specified paths, throw this error
