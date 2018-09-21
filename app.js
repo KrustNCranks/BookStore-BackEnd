@@ -23,5 +23,23 @@ app.use(bodyParser.json());
 app.use('/books',bookRoutes);
 app.use('/users',userRoutes);
 
+
+// If App reaches anywhere else but the specified paths, throw this error
+app.use((req, res, next)=>{
+    const error = new Error("Not Found, Check URL");
+    error.status = 404;
+    next(error);
+});
+
+// If there is any other error or database related errors
+app.use((error, req, res, next)=>{
+    res.status(error.status || 500);
+    res.json({
+        error: {
+            message: error.message
+        }
+    });
+});
+
 console.log("Server is Activated...");
 module.exports = app;
