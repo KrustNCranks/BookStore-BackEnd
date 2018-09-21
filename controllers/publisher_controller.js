@@ -4,7 +4,7 @@ const Publisher = require('../models/publisher_model');
 /**
  * GET this will return all the Publisher
  */
-exports.get_all_genres =(req,res,next)=>{
+exports.get_all_publishers =(req,res,next)=>{
     Publisher.find().select("name").exec()
         .then(docs =>{
             const response = {
@@ -30,7 +30,7 @@ exports.get_all_genres =(req,res,next)=>{
 /**
  * POST this will post a new iTem to Publishers
  */
-exports.add_genre = (req, res, next)=>{
+exports.add_publisher = (req, res, next)=>{
     const genre = new Publisher({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,

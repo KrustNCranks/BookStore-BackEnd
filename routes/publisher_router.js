@@ -4,16 +4,16 @@ const router = express.Router();
 /**
  * Importing the Publisher Controller file
  */
-const PublisherController = require('../controllers/books_controller');
+const PublisherController = require('../controllers/publisher_controller');
 
 /**
- * This is used to return ALL books in the DB
+ * This is used to return ALL publishers in the DB
  */
-router.get('/',BookController.get_all_books);
+router.get('/',PublisherController.get_all_publishers());
 
 /**
  * This is used to post to the DB
  */
-router.post('/',BookController.post_book);
+router.post('/',PublisherController.add_publisher());
 
 module.exports = router;
