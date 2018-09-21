@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
-const Publisher = require('../models/publisher_model');
+const Author = require('../models/author_model');
 
 /**
- * GET this will return all the Publisher
+ * GET this will return all the Author
  */
-exports.get_all_publishers =(req,res,next)=>{
-    Publisher.find().select("name").exec()
+exports.get_all_authors =(req,res,next)=>{
+    Author.find().select("name dateOfBirth genre").exec()
         .then(docs =>{
             const response = {
                 count: docs.length,
-                Publisher: docs.map(doc =>{
+                Author: docs.map(doc =>{
                     return{
                         _id: doc._id,
-                        name: doc.name
+                        name: doc.name,
+                        dateOfBirth: doc.dateOfBirth,
+                        genre: doc.genre
                     }
                 })
             }
@@ -28,17 +30,19 @@ exports.get_all_publishers =(req,res,next)=>{
 }
 
 /**
- * POST this will post a new iTem to Publishers
+ * POST this will post a new iTem to Author
  */
 exports.add_publisher = (req, res, next)=>{
-    const publisher = new Publisher({
+    const author = new Author({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
+        dateOfBirth: req.body.dateOfBirth,
+        genre: req.body.genre
     })
-    publisher.save().then(result =>{
+    author.save().then(result =>{
         console.log(result);
         res.status(200).json({
-            message: "Publisher has been added",
+            message: "Author has been added",
             publisherDetails: result
         });
     })
